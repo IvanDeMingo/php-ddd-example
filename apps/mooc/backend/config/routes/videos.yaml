@@ -1,0 +1,4 @@
+last_published_video_get:
+  path: /last-published-video
+  controller: CodelyTv\Apps\Mooc\Backend\Controller\Videos\LastPublishedVideoGetController
+  methods:  [GET]
