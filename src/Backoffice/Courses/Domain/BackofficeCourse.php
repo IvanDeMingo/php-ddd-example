@@ -44,5 +44,7 @@ final class BackofficeCourse extends AggregateRoot
     public function setName(string $name)
     {
         $this->name = $name;
+
+        $this->record(new BackofficeCourseNameModifiedDomainEvent($this->id, $this->name));
     }
 }

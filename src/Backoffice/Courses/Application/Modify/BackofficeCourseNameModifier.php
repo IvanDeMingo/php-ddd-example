@@ -6,12 +6,13 @@ namespace CodelyTv\Backoffice\Courses\Application\Modify;
 
 use CodelyTv\Backoffice\Courses\Domain\BackofficeCourseFinder;
 use CodelyTv\Backoffice\Courses\Domain\BackofficeCourseRepository;
+use CodelyTv\Shared\Domain\Bus\Event\EventBus;
 
 final class BackofficeCourseNameModifier
 {
     private BackofficeCourseFinder $finder;
 
-    public function __construct(private BackofficeCourseRepository $repository)
+    public function __construct(private BackofficeCourseRepository $repository, private EventBus $bus)
     {
         $this->finder = new BackofficeCourseFinder($repository);
     }
@@ -23,5 +24,7 @@ final class BackofficeCourseNameModifier
         $course->setName($name);
 
         $this->repository->save($course);
+
+        $this->bus->publish(...$course->pullDomainEvents());
     }
 }
