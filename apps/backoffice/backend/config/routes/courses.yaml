@@ -3,3 +3,9 @@ courses_get:
   controller: CodelyTv\Apps\Backoffice\Backend\Controller\Courses\CoursesGetController
   defaults: { auth: false }
   methods:  [GET]
+
+modify_course_name_patch:
+  path: /courses/{id}
+  controller: CodelyTv\Apps\Backoffice\Backend\Controller\Courses\ModifyCourseNamePatchController
+  defaults: { auth: false }
+  methods: [PATCH]

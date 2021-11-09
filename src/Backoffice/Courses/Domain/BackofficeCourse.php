@@ -40,4 +40,9 @@ final class BackofficeCourse extends AggregateRoot
     {
         return $this->duration;
     }
+
+    public function setName(string $name)
+    {
+        $this->name = $name;
+    }
 }

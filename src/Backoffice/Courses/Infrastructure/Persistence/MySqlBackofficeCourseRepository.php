@@ -28,4 +28,9 @@ final class MySqlBackofficeCourseRepository extends DoctrineRepository implement
 
         return $this->repository(BackofficeCourse::class)->matching($doctrineCriteria)->toArray();
     }
+
+    public function find(string $id): ?BackofficeCourse
+    {
+        return $this->repository(BackofficeCourse::class)->find($id);
+    }
 }

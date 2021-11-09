@@ -42,4 +42,15 @@ final class InMemoryCacheBackofficeCourseRepository implements BackofficeCourseR
     {
         return self::$matchingCache[$criteria->serialize()] = $this->repository->matching($criteria);
     }
+
+    public function find(string $id): ?BackofficeCourse
+    {
+        foreach ($this->searchAllAndFillCache() as $course) {
+            if ($course->id() === $id) {
+                return $course;
+            }
+        }
+
+        return null;
+    }
 }
