@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace CodelyTv\Tests\Mooc\Courses;
 
+use CodelyTv\Mooc\Courses\Domain\CourseNotifier;
 use CodelyTv\Mooc\Courses\Domain\CourseRepository;
 use CodelyTv\Tests\Mooc\Shared\Infrastructure\PhpUnit\MoocContextInfrastructureTestCase;
 
@@ -12,5 +13,10 @@ abstract class CoursesModuleInfrastructureTestCase extends MoocContextInfrastruc
     protected function repository(): CourseRepository
     {
         return $this->service(CourseRepository::class);
+    }
+
+    protected function notifier(): CourseNotifier
+    {
+        return $this->service(CourseNotifier::class);
     }
 }
