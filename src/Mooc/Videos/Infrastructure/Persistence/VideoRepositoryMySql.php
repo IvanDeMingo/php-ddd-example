@@ -44,4 +44,9 @@ final class VideoRepositoryMySql extends DoctrineRepository implements VideoRepo
     {
         return $this->repository(Video::class)->findOneBy([], ['id' => 'desc']);
     }
+
+    public function searchAll(): Videos
+    {
+        return new Videos($this->repository(Video::class)->findAll());
+    }
 }
